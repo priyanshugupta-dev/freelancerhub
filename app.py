@@ -9,7 +9,110 @@ app.secret_key = "your_secret_key"  # Secret key for session management
 
 # In-memory storage for users and jobs
 users = []
-jobs = []
+jobs = [
+    {
+        "title": "Web Development Project",
+        "description": "Looking for a front-end developer to build a responsive website.",
+        "budget": 500,
+        "poster": "John Doe"
+    },
+    {
+        "title": "Logo Design",
+        "description": "Need a creative designer to create a company logo.",
+        "budget": 100,
+        "poster": "Jane Smith"
+    },
+    {
+        "title": "Content Writing for Blog",
+        "description": "Need a writer to create engaging blog posts on technology trends.",
+        "budget": 50,
+        "poster": "Emily Brown"
+    },
+    {
+        "title": "Mobile App Development",
+        "description": "Seeking an Android/iOS developer to build a fitness tracking app.",
+        "budget": 1200,
+        "poster": "Michael Johnson"
+    },
+    {
+        "title": "SEO Optimization",
+        "description": "Need an SEO expert to improve website ranking on search engines.",
+        "budget": 300,
+        "poster": "Sarah Williams"
+    },
+    {
+        "title": "Data Entry Task",
+        "description": "Looking for a freelancer to enter data into an Excel sheet.",
+        "budget": 80,
+        "poster": "David Anderson"
+    },
+    {
+        "title": "Video Editing",
+        "description": "Need a professional video editor for YouTube content.",
+        "budget": 250,
+        "poster": "Sophia Lee"
+    },
+    {
+        "title": "Social Media Management",
+        "description": "Looking for a social media manager to handle Instagram and Facebook.",
+        "budget": 400,
+        "poster": "Chris Evans"
+    },
+    {
+        "title": "Python Automation Script",
+        "description": "Need a Python script to automate data scraping from websites.",
+        "budget": 600,
+        "poster": "Olivia Wilson"
+    },
+    {
+        "title": "Translation (English to Spanish)",
+        "description": "Need a translator to convert English documents into Spanish.",
+        "budget": 150,
+        "poster": "Daniel Martinez"
+    },
+    {
+        "title": "WordPress Website Setup",
+        "description": "Looking for a freelancer to set up a WordPress website with a custom theme.",
+        "budget": 350,
+        "poster": "James Taylor"
+    },
+    {
+        "title": "Illustration for Children's Book",
+        "description": "Need an illustrator to create colorful images for a children's book.",
+        "budget": 500,
+        "poster": "Natalie Green"
+    },
+    {
+        "title": "Cybersecurity Consultation",
+        "description": "Seeking a cybersecurity expert to audit and secure a company website.",
+        "budget": 800,
+        "poster": "Henry Thomas"
+    },
+    {
+        "title": "E-commerce Store Setup",
+        "description": "Need a Shopify developer to set up an e-commerce store.",
+        "budget": 1000,
+        "poster": "Emma Roberts"
+    },
+    {
+        "title": "Facebook Ads Campaign",
+        "description": "Looking for an expert to create and optimize Facebook ad campaigns.",
+        "budget": 450,
+        "poster": "Robert King"
+    },
+    {
+        "title": "AAAAA",
+        "description": "aaaaaaaaaaaaadsa",
+        "budget": "200",
+        "poster": "sahpriyanshu2012@gmail.com"
+    },
+    {
+        "title": "sssssssssssssss",
+        "description": "asasda",
+        "budget": "20",
+        "poster": "priyanshu gupta"
+    }
+]
 
 # Load users (from memory)
 def load_users():
