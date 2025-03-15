@@ -8,7 +8,13 @@ app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Secret key for session management
 
 # In-memory storage for users and jobs
-users = []
+users = [
+    {
+        "name": "priyanshu Gupta",
+        "email": "sahpriyanshu2012@gmail.com",
+        "password": "demo"
+    }
+]
 jobs = [
     {
         "title": "Web Development Project",
@@ -99,18 +105,6 @@ jobs = [
         "description": "Looking for an expert to create and optimize Facebook ad campaigns.",
         "budget": 450,
         "poster": "Robert King"
-    },
-    {
-        "title": "AAAAA",
-        "description": "aaaaaaaaaaaaadsa",
-        "budget": "200",
-        "poster": "sahpriyanshu2012@gmail.com"
-    },
-    {
-        "title": "sssssssssssssss",
-        "description": "asasda",
-        "budget": "20",
-        "poster": "priyanshu gupta"
     }
 ]
 
