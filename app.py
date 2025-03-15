@@ -1,44 +1,27 @@
 from flask import Flask, render_template, request, redirect, session, jsonify
-import json
-import os
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Secret key for session management
 
-USER_FILE = "static/user.json"
-DASHBOARD_FILE = "static/dashboard.json"
+# In-memory storage for users and jobs
+users = []
+jobs = []
 
-# Load users from user.json
+# Load users (from memory)
 def load_users():
-    if os.path.exists(USER_FILE):
-        with open(USER_FILE, "r") as file:
-            content = file.read()
-            return json.loads(content) if content else []
-    return []
+    return users
 
-# Save users to user.json
+# Save users (to memory)
 def save_user(new_user):
-    users = load_users()
     users.append(new_user)
-    with open(USER_FILE, "w") as file:
-        json.dump(users, file, indent=4)
 
+# Load jobs (from memory)
 def load_jobs():
-    if os.path.exists("dashboard.json"):
-        with open(DASHBOARD_FILE, "r") as file:
-            try:
-                return json.load(file)
-            except json.JSONDecodeError:
-                return []
-    return []
+    return jobs
 
-# Save jobs to dashboard.json
+# Save jobs (to memory)
 def save_job(new_job):
-    jobs = load_jobs()
     jobs.append(new_job)
-    with open(DASHBOARD_FILE, "w") as file:
-        json.dump(jobs, file, indent=4)
-
 
 # Home Route
 @app.route('/')
@@ -47,20 +30,14 @@ def home():
 
 @app.route('/get-jobs')
 def get_jobs():
-    try:
-        with open(DASHBOARD_FILE, "r") as file:
-            jobs = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        jobs = []  # Return empty list if file not found or corrupt
-
-    return jsonify(jobs)
+    return jsonify(load_jobs())  # Return in-memory jobs
 
 @app.route('/post-job', methods=["GET", "POST"])
 def post_job():
     if "user" not in session:
         return redirect("/login")  # Redirect if not logged in
-    
-    users = load_users()
+
+    # Get logged-in user details
     current_user_email = session["user"]
     current_user = next((u for u in users if u["email"] == current_user_email), None)
     poster_name = current_user["name"] if current_user else "Unknown"
@@ -77,7 +54,7 @@ def post_job():
             "title": data["title"],
             "description": data["description"],
             "budget": data["budget"],
-            "poster": poster_name # Store logged-in user as the poster
+            "poster": poster_name  # Store logged-in user's full name
         }
 
         save_job(new_job)
@@ -88,19 +65,16 @@ def post_job():
 def sign():
     if request.method == 'GET':
         return render_template('signup.html')
-    
+
     data = request.json
     name = data.get("name")
     email = data.get("email")
     password = data.get("password")
 
-    users = load_users()
-    
     # Check if user already exists
-    for user in users:
-        if user["email"] == email:
-            return jsonify({"success": False, "message": "Email already registered!"})
-    
+    if any(user["email"] == email for user in users):
+        return jsonify({"success": False, "message": "Email already registered!"})
+
     new_user = {"name": name, "email": email, "password": password}
     save_user(new_user)
 
@@ -116,13 +90,12 @@ def login():
     email = data.get("email")
     password = data.get("password")
 
-    users = load_users()
-
+    # Validate user credentials
     for user in users:
         if user["email"] == email and user["password"] == password:
             session["user"] = user["email"]  # Store user session
             return jsonify({"success": True, "message": "Login successful!", "redirect": "/dashboard"})
-    
+
     return jsonify({"success": False, "message": "Invalid credentials! Please try again."})
 
 # Dashboard Route (Restricted to Logged-in Users)
@@ -130,7 +103,7 @@ def login():
 def dashboard():
     if "user" not in session:
         return redirect("/login")  # Redirect if not logged in
-    
+
     return render_template('dashboard.html')
 
 # Logout Route
