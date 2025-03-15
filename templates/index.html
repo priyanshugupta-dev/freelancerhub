@@ -6,6 +6,20 @@
     <title>Freelancer Platform</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/style.css">
+    <title>FreeLancer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link href="http://fonts.cdnfonts.com/css/bogart" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://kit.fontawesome.com/f3b8dc9442.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
     <style>
         body {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
@@ -22,7 +36,7 @@
             background: linear-gradient(135deg, #007bff, #6610f2);
             color: white;
             border-radius: 0 0 30px 30px;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
         }
         .hero-section h1 {
             font-size: 3rem;
@@ -81,7 +95,7 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">Freelancer Platform</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -95,7 +109,55 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
+    <section class="" id="title">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">SkillSphere</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#title">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/sign">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                  </li>
+              </ul>
+              <!-- <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="work in progress" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form> -->
+            </div>
+          </div>
+        </nav>
+        <!-- <div style="padding-top: 80px;">
+          <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+              <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+              <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+              <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+              <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+              <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+          </svg>
+        </div> -->
+      </section>
 
     <!-- Hero Section -->
     <div class="hero-section">
@@ -107,8 +169,12 @@
         </div>
     </div>
 
-    <!-- Features Section -->
-    <div class="features-section container">
+    <section id="services" class="card" style="background-color: #212529!important;">
+        <h1 style="text-align: center;">We Offer</h1>
+        <div class="container" style="background-color: #191919;border-radius: 20px;margin-bottom: 30px;">
+            <h2 class="pricing-header-top">A Plan for Every Freelancer's Needs</h2>
+          <p>Simple and affordable price plans for you and your journey.</p>
+    
         <div class="row">
             <div class="col-md-4">
                 <div class="feature-tile">
@@ -119,7 +185,7 @@
             <div class="col-md-4">
                 <div class="feature-tile">
                     <h3>Post a Job</h3>
-                    <p>Hire the best freelancers for your projects easily.</p>
+                    <p>Hire the best freelancers for your projects easily on skillsphere platform.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -130,13 +196,112 @@
             </div>
         </div>
     </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            &copy; 2025 Freelancer Platform. All rights reserved.
+    <section id="services" class="card" style="background-color: #212529!important;">
+        <h1 style="text-align: center;">Services</h1>
+        <div class="container" style="background-color: #191919;border-radius: 20px;margin-bottom: 30px;">
+    
+          <h2 class="pricing-header-top">A Plan for Every Freelancer's Needs</h2>
+          <p>Simple and affordable price plans for you and your journey.</p>
+    
+    
+          <div class="row">
+    
+            <div class="col-lg-4 col-md-6">
+              <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">
+                  <h3>Basic</h3>
+                </div>
+                <div class="card-body">
+                  <h2 class="pricing-header">Free</h2>
+                  <p>50 Skills</p>
+                  <p>50 Bids Per Month</p>
+                  <p>1 free highlighted contest/ mo</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-4 col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Plus</h3>
+                </div>
+                <div class="card-body">
+                  <h2 class="pricing-header">$49 / mo</h2>
+                  <p>80 Skills</p>
+                  <p>100 Bids Per Month</p>
+                  <p>10 free highlighted contest/ mo</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-4 col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Professional</h3>
+                </div>
+                <div class="card-body">
+                  <h2 class="pricing-header">$99 / mo</h2>
+                  <p>100 Skills</p>
+                  <p>300 Bids Per Month</p>
+                  <p>20 free highlighted contest/ mo</p>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    
         </div>
-    </footer>
+      </section>
+
+    <!-- Features Section -->
+    
+
+    <section id="contact" class="card" style="background-color: #212529!important;">
+        <h1 style="text-align: center;">Contact US</h1>
+        <div class="container" style="background-color: #191919;border-radius: 20px;margin-bottom: 10px;">
+    
+    
+        <footer id="footer">
+          <form action="/" method="POST" onsubmit="alert('Thanks you, We will keep in touch.')">
+            
+              <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                <div class="form-floating"style="margin-bottom:1rem;"><input type="text" maxlength="25" class="form-control" id="floatingInput" placeholder="John" name="name" required>
+                  <label for="floatingInput">Name</label>
+                </div>
+                <div class="form-floating" style="margin-bottom:1rem;"><input type="email" maxlength="35" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
+                  <label for="floatingInput">Email</label>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <div class="form-floating" style="margin-bottom:1rem;">
+                  <textarea  class="form-control keyremaining" style="height: 130px;" maxlength="200" placeholder="Leave a comment here" id="floatingTextarea" name="message" required></textarea>
+                  <label id = "charcount" for="floatingTextarea">Message</label>
+                  
+    
+                  </textarea>
+                </div>
+              </div>
+              </div>
+              
+           
+            
+            <button type="submit" class="btn btn-primary btn-lg">Let's Talk</button>
+     
+          </form>
+         
+        <i type="button" class="footer-icon fab fa-linkedin"  onclick="window.open('https://www.linkedin.com/in/sah-priyanshu-45462523b/', '_blank');"></i>
+        <i type="button" class="footer-icon fab fa-github"  onclick="window.open('https://github.com/priyanshugupta-dev', '_blank');"></i>  
+        <i type="button" class="footer-icon fab fa-facebook"  onclick="window.open('https://facebook.com/sahpriyanshu', '_blank');"></i>
+        <i type="button" class="footer-icon fab fa-instagram"  onclick="window.open('https://www.instagram.com/priyanshu_gupta.jee/', '_blank');"></i>
+        
+        <p>© Copyright 2022</p>
+    
+      </footer>
+      </div>
+      </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

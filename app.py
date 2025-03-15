@@ -1,4 +1,8 @@
 from flask import Flask, render_template, request, redirect, session, jsonify
+import smtplib
+from jinja2 import Template
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Secret key for session management
@@ -24,8 +28,47 @@ def save_job(new_job):
     jobs.append(new_job)
 
 # Home Route
-@app.route('/')
-def home():
+@app.route("/", methods=['GET', 'POST', 'PUT']) # decorator
+def home(): # route handler function
+    # returning a response
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+        myEmail = 'sahpriyanshu2012@gmail.com'
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = "Warm regards from Aman"
+        msg['From'] = myEmail
+        msg['To'] = email
+        
+       # Create the body of the message (a plain-text and an HTML version).
+
+        with open("templates/contact.html", encoding='utf-8-sig') as myfile:
+            outerdata=myfile.read()
+            template = Template(outerdata)
+            mainpage=template.render(firstName = name,body = message)
+        # text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
+        html = mainpage
+
+       # Record the MIME types of both parts - text/plain and text/html.
+        # part1 = MIMEText(text, 'plain')
+        part2 = MIMEText(html, 'html')
+
+       # Attach parts into message container.
+       # According to RFC 2046, the last part of a multipart message, in this case
+       # the HTML message, is best and preferred.
+        # msg.attach(part1)
+        msg.attach(part2)
+
+       # Send the message via local SMTP server.
+        mail = smtplib.SMTP('smtp.gmail.com', 587)
+        mail.ehlo()
+        mail.starttls()
+        mail.login(myEmail, 'egew wyph oigl xgsm')
+        mail.sendmail(myEmail, email, msg.as_string())
+        mail.quit()
+        return render_template('index.html')
+        
     return render_template('index.html')
 
 @app.route('/get-jobs')
