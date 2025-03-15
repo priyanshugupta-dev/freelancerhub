@@ -1,0 +1,22 @@
+body {
+    background-color: #f8f9fa;
+}
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.container {
+    max-width: 900px;
+}
+.card {
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: scale(1.02);
+}
+.form-control, .btn {
+    border-radius: 8px;
+}
+.list-group-item {
+    border-radius: 8px;
+    margin-bottom: 5px;
+}

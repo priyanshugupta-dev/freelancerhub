@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - Freelancer Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .job-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Freelancer Platform</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Job Posting Form -->
+    <div class="container">
+        <div class="job-container">
+            <h3 class="text-center">Post a Job</h3>
+            <form id="jobForm">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Job Title</label>
+                    <input type="text" class="form-control" id="title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Job Description</label>
+                    <textarea class="form-control" id="description" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="budget" class="form-label">Budget (₹)</label>
+                    <input type="number" class="form-control" id="budget" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Post Job</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("jobForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            let title = document.getElementById("title").value;
+            let description = document.getElementById("description").value;
+            let budget = document.getElementById("budget").value;
+            
+            let response = await fetch("/post-job", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title, description, budget })
+            });
+
+            let result = await response.json();
+            if (result.success) {
+                alert("Job posted successfully!");
+                window.location.href = "/dashboard";
+            } else {
+                alert(result.message);
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
